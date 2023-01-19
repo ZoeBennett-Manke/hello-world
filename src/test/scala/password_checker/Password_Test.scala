@@ -14,6 +14,12 @@ class Password_Test extends AnyFunSpec with Matchers {
         Password.isValid(longEnough) shouldBe true
         Password.isValid(evenLonger) shouldBe true
       }
+      it("rejects passwords that do not include a special character") {
+        val noCharacter = "abcdef"
+        val specialCharacter = "abcdef!"
+        Password.isValid(noCharacter) shouldBe false
+        Password.isValid(specialCharacter) shouldBe true
+      }
     }
   }
 
